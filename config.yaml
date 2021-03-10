@@ -1,0 +1,28 @@
+# name should be the same with <name>@bighitcorp.com
+- profile: default
+  name: gslee@gmail.com
+  duration: 14400
+
+  # Assume role list used for assuming to another account
+  # Do not add username after role arn
+  assume_roles:
+    dev: arn:aws:iam::xxxxxxxxxx:role/assumerole
+    stage: arn:aws:iam::xxxxxxxxx:role/assumerole
+    loadtest: arn:aws:iam::xxxxxxxxxxx:role/assumerole
+
+  # databases hostnames
+  # A value of key should be in the array of keys of assume_roles
+  databases:
+    dev:
+      - <cluster domain 1>
+      - <cluster domain 2>
+      - ...
+    stage:
+      - <cluster domain 1>
+      - <cluster domain 2>
+      - ...
+    prod:
+      - <cluster domain 1>
+      - <cluster domain 2>
+      - ...
+
