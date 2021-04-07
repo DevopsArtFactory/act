@@ -11,7 +11,7 @@ You can assume to the different AWS account or generate rds authentication token
 * macOS user
 ```bash
 $ brew tap DevopsArtFactory/devopsart
-$ brew install devopsart/act
+$ brew install devopsartfactory/devopsart/ac
 $ act version -v info
 ```
 
