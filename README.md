@@ -11,7 +11,7 @@ You can assume to the different AWS account or generate rds authentication token
 * macOS user
 ```bash
 $ brew tap DevopsArtFactory/devopsart
-$ brew install act
+$ brew install devopsart/act
 $ act version -v info
 ```
 
@@ -75,8 +75,8 @@ $ vim ~/.aws/config.yaml
     d: preprod
     p: prod
   assume_roles:
-    preprod: arn:aws:iam::xxxxxxxxxxxx:role/userassume-benx-preprod-admin
-    prod: arn:aws:iam::xxxxxxxxxxx:role/userassume-benx-prod-admin
+    preprod: arn:aws:iam::xxxxxxxxxxxx:role/userassume-devopsart-preprod-admin
+    prod: arn:aws:iam::xxxxxxxxxxx:role/userassume-devopsart-prod-admin
 
 # This is equal to `act setup preprod`
 $ act setup d
