@@ -47,6 +47,11 @@ func New(flags *builder.Flags, config *schema.Config) Runner {
 	}
 }
 
+func IsDarwin() bool {
+    ostype := strings.ToLower(os.Getenv("OSTYPE"))
+    return strings.HasPrefix(ostype, "darwin")
+}
+
 //CopyRDSToken copies RDS Token to clipboard
 func (r Runner) CopyRDSToken(env, region string) error {
 	config, err := config.GetConfig()
@@ -194,7 +199,7 @@ func (r Runner) Setup(out io.Writer, args []string) error {
 		return err
 	}
 
-	rawOutput := viper.GetBool("raw-output")
+	rawOutput := viper.GetBool("raw-output") || (IsDarwin() == false)
 
 	if rawOutput {
 		fmt.Printf("export AWS_ACCESS_KEY_ID=%s\n", *assumeCreds.AccessKeyId)
