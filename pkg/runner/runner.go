@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+    "runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -48,8 +49,7 @@ func New(flags *builder.Flags, config *schema.Config) Runner {
 }
 
 func IsDarwin() bool {
-    ostype := strings.ToLower(os.Getenv("OSTYPE"))
-    return strings.HasPrefix(ostype, "darwin")
+    return runtime.GOOS == "darwin"
 }
 
 //CopyRDSToken copies RDS Token to clipboard
