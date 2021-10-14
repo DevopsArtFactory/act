@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+    "runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -45,6 +46,10 @@ func New(flags *builder.Flags, config *schema.Config) Runner {
 		Flag:      flags,
 		Config:    config,
 	}
+}
+
+func IsDarwin() bool {
+    return runtime.GOOS == "darwin"
 }
 
 //CopyRDSToken copies RDS Token to clipboard
@@ -194,7 +199,7 @@ func (r Runner) Setup(out io.Writer, args []string) error {
 		return err
 	}
 
-	rawOutput := viper.GetBool("raw-output")
+	rawOutput := viper.GetBool("raw-output") || (IsDarwin() == false)
 
 	if rawOutput {
 		fmt.Printf("export AWS_ACCESS_KEY_ID=%s\n", *assumeCreds.AccessKeyId)
